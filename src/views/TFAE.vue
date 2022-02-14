@@ -1,18 +1,24 @@
 <template>
   <div class="TFAE">
     <h1>The Following Statments Are Equivalent</h1>
-    <h3 id="context">{{ currentProblemSet.context }}</h3>
+    <h4 id="context">
+      <i>{{ currentProblemSet.context }}</i>
+    </h4>
     <div id="options">
-      <h4
+      <h4 class="problem-head">Is Equivalent to:</h4>
+      <div
         v-for="problem in currentProblemSet.problems"
         :key="problem.statement"
         class="option"
       >
-        {{ problem.statement }}
-      </h4>
+        <h4>
+          {{ problem.statement }}
+        </h4>
+      </div>
     </div>
     <div id="question">
-      <h3 id="equivalency">{{ currentQuestion }}</h3>
+      <h4 class="problem-head">Statement:</h4>
+      <h2 id="equivalency">{{ currentQuestion }}</h2>
     </div>
   </div>
 </template>
@@ -45,3 +51,41 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#options {
+  position: fixed;
+  width: 50%;
+  left: 50%;
+  margin-top: 0;
+}
+
+.option {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.option h4 {
+  padding: 10px;
+  margin: auto;
+  width: 80%;
+  border-left: 8px solid rgba(16, 200, 205);
+  background-color: rgba(16, 200, 205, 0.2);
+}
+
+.problem-head {
+  margin-top: 20px;
+}
+
+#question {
+  position: fixed;
+  margin-left: 10%;
+  width: 40%;
+  margin-top: auto;
+}
+
+#context {
+  text-decoration: underline;
+}
+</style>
