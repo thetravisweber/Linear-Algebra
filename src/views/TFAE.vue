@@ -10,6 +10,7 @@
         v-for="problem in currentProblemSet.problems"
         :key="problem.statement"
         class="option"
+        @click="clickedOn(problem.statement)"
       >
         <h4>
           {{ problem.statement }}
@@ -31,24 +32,42 @@ export default {
   name: "TFAE",
   mixins: [Help],
   data: function () {
-    const startingProblemSet = Help.randomElement(problemData);
-    const startingProblem = Help.randomElement(startingProblemSet.problems);
-    const startingQuestion = Help.randomElement(startingProblem.equivalencies);
     return {
       problems: problemData,
-      currentProblemSet: startingProblemSet,
-      currentProblem: startingProblem,
-      currentQuestion: startingQuestion,
+      currentProblemSet: [],
+      currentProblem: [],
+      currentQuestion: "",
     };
   },
-  mounted: function () {
-    console.log(this.currentProblem);
-  },
   methods: {
-    randomProblemSet: function () {
-      return Help.randomElement(this.problemData);
+    clickedOn: function (statement) {
+      // eslint-disable-next-line prettier/prettier
+      let correct = (this.currentProblem.statement == statement);
+
+      if (correct) {
+        this.showCorrect();
+      } else {
+        this.showIncorrect();
+      }
+      this.assignNewProblem();
+    },
+    assignNewProblem: function () {
+      this.currentProblemSet = Help.randomElement(this.problems);
+      this.currentProblem = Help.randomElement(this.currentProblemSet.problems);
+      this.currentQuestion = Help.randomElement(
+        this.currentProblem.equivalencies
+      );
+    },
+    showCorrect: function () {
+      return 1;
+    },
+    showIncorrect: function () {
+      return 1;
     },
   },
+  mounted: function() {
+    this.assignNewProblem();
+  }
 };
 </script>
 
