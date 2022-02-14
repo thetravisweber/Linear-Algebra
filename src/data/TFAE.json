@@ -1,23 +1,27 @@
 [
-    {
-      "context": "For T: R^n -> R^m represented by A",
-      "statement": "T is one to one",
-      "equivalencies": [
-        "T(x) = b has at most one solution x for each b",
-        "A has no free variables",
-        "Ax = 0 has only the trivial solution",
-        "A has a picot in every column",
-        "columns of A are linearly independent"
-      ]
-    },
-    {
-      "context": "For T: R^n -> R^m represented by A",
-      "statement": "T is onto",
-      "equivalencies": [
-        "T(x) = b has at most one solution x for each b",
-        "T(x) = b has a solution for every b",
-        "A has a pivot in every row",
-        "the columns of A span R^m"
-      ]
-    }
+  {
+    "context": "For T: R^n -> R^m represented by A",
+    "problems": [
+      {
+        "statement": "T is one to one",
+        "equivalencies": [
+          "T(x) = b has at most one solution x for each b",
+          "A has no free variables",
+          "Ax = 0 has only the trivial solution",
+          "A has a picot in every column",
+          "columns of A are linearly independent"
+        ]
+      },
+      {
+      
+        "statement": "T is onto",
+        "equivalencies": [
+          "T(x) = b has at most one solution x for each b",
+          "T(x) = b has a solution for every b",
+          "A has a pivot in every row",
+          "the columns of A span R^m"
+        ]
+      }
+    ]
+  }
 ]
