@@ -1,14 +1,18 @@
 <template>
   <div class="TFAE">
     <h1>The Following Statments Are Equivalent</h1>
-    <h3 id="context">{{ currentProblem.context }}</h3>
+    <h3 id="context">{{ currentProblemSet.context }}</h3>
     <div id="options">
-      <h4 v-for="statement in statements" :key="statement" class="option">
-        {{ statement }}
+      <h4
+        v-for="problem in currentProblemSet.problems"
+        :key="problem.statement"
+        class="option"
+      >
+        {{ problem.statement }}
       </h4>
     </div>
     <div id="question">
-      <h3 id="equivalency">Proposed Statement will go here</h3>
+      <h3 id="equivalency">{{ currentQuestion }}</h3>
     </div>
   </div>
 </template>
@@ -21,24 +25,22 @@ export default {
   name: "TFAE",
   mixins: [Help],
   data: function () {
+    const startingProblemSet = Help.randomElement(problemData);
+    const startingProblem = Help.randomElement(startingProblemSet.problems);
+    const startingQuestion = Help.randomElement(startingProblem.equivalencies);
     return {
       problems: problemData,
-      currentProblem: Help.randomElement(problemData),
+      currentProblemSet: startingProblemSet,
+      currentProblem: startingProblem,
+      currentQuestion: startingQuestion,
     };
   },
-  mounted: function() {
+  mounted: function () {
     console.log(this.currentProblem);
   },
   methods: {
-    randomProblem: function () {
+    randomProblemSet: function () {
       return Help.randomElement(this.problemData);
-    },
-  },
-  computed: {
-    statements: function () {
-      return this.problems.map((el) => {
-        return el.statement;
-      });
     },
   },
 };

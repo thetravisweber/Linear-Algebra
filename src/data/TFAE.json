@@ -8,7 +8,7 @@
           "T(x) = b has at most one solution x for each b",
           "A has no free variables",
           "Ax = 0 has only the trivial solution",
-          "A has a picot in every column",
+          "A has a pivot in every column",
           "columns of A are linearly independent"
         ]
       },
