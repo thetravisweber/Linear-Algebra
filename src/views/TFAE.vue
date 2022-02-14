@@ -3,9 +3,13 @@
     <h1>The Following Statments Are Equivalent</h1>
     <h3 id="context">{{ currentProblem.context }}</h3>
     <div id="options">
-      <p>options will go here lol</p>
+      <h4 v-for="statement in statements" :key="statement" class="option">
+        {{ statement }}
+      </h4>
     </div>
-    <h2 id="context">{{ currentProblem.statement }}</h2>
+    <div id="question">
+      <h3 id="equivalency">Proposed Statement will go here</h3>
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,9 @@ export default {
       problems: problemData,
       currentProblem: Help.randomElement(problemData),
     };
+  },
+  mounted: function() {
+    console.log(this.currentProblem);
   },
   methods: {
     randomProblem: function () {
