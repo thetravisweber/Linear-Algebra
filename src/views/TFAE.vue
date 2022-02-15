@@ -21,6 +21,9 @@
       <h4 class="problem-head">Statement:</h4>
       <h2 id="equivalency">{{ currentQuestion }}</h2>
     </div>
+    <div class="correctness">
+      <h3 id="correct" :class="correctness">{{ correctness }}</h3>
+    </div>
   </div>
 </template>
 
@@ -37,6 +40,7 @@ export default {
       currentProblemSet: [],
       currentProblem: [],
       currentQuestion: "",
+      correctness: "",
     };
   },
   methods: {
@@ -59,15 +63,15 @@ export default {
       );
     },
     showCorrect: function () {
-      return 1;
+      this.correctness = "Correct 👍";
     },
     showIncorrect: function () {
-      return 1;
+      this.correctness = "Incorrect";
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.assignNewProblem();
-  }
+  },
 };
 </script>
 
@@ -106,5 +110,17 @@ export default {
 
 #context {
   text-decoration: underline;
+}
+
+.correctness {
+  margin-top: 250px;
+}
+
+.Correct {
+  color: darkgreen;
+}
+
+.Incorrect {
+  color: red;
 }
 </style>

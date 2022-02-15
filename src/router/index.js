@@ -15,6 +15,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import("../views/TFAE.vue"),
   },
+  {
+    path: "/matrix-multiplication",
+    name: "Matrix Multiplication",
+    component: () => import("../views/MatrixMultiplication.vue"),
+  },
 ];
 
 const router = createRouter({

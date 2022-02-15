@@ -1,7 +1,8 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/tfae">TFAE</router-link>
+    <router-link to="/tfae">TFAE</router-link> |
+    <router-link to="/matrix-multiplication">Matrix Multiplication</router-link>
   </div>
   <router-view />
 </template>
